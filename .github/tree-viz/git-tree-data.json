@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "repository": "ubu-tools",
+    "current_branch": "main",
+    "repo_url": "https://github.com/XAOSTECH/ubu-tools",
+    "generated": "2026-03-30T01:52:20Z",
+    "max_commits": 500
+  },
+  "commits": [
+  {
+    "sha": "3c9f589da458b3363c0fc50393d2921d3ad311a1",
+    "short": "3c9f589",
+    "parents": "46799e9dbe726aa5a1023ff8c38a6caf134b1668",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-26T20:17:19+01:00",
+    "timestamp": 1774552639,
+    "subject": "chore(dc-init): load workflows,actions",
+    "refs": "HEAD -> main, origin/main"
+  },
+  {
+    "sha": "46799e9dbe726aa5a1023ff8c38a6caf134b1668",
+    "short": "46799e9",
+    "parents": "4a9deae1ff1bf240a216485c181b60df23e71b53",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-23T17:56:08+01:00",
+    "timestamp": 1774284968,
+    "subject": "chore(dc-init): load workflows,actions",
+    "refs": ""
+  },
+  {
+    "sha": "4a9deae1ff1bf240a216485c181b60df23e71b53",
+    "short": "4a9deae",
+    "parents": "2d426cca6e64b1379e424beceb80775b1aee3152",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-23T17:54:03+01:00",
+    "timestamp": 1774284843,
+    "subject": "chore(dc-init): load workflows,actions",
+    "refs": ""
+  },
+  {
+    "sha": "2d426cca6e64b1379e424beceb80775b1aee3152",
+    "short": "2d426cc",
+    "parents": "9f3150996b72acbdbbc60a6cb79bd951afda2090",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-15T06:26:08+01:00",
+    "timestamp": 1773552368,
+    "subject": "chore(dc-init): update workflows,actions",
+    "refs": ""
+  },
+  {
+    "sha": "9f3150996b72acbdbbc60a6cb79bd951afda2090",
+    "short": "9f31509",
+    "parents": "4cffa0c9bca24cc83538b66fcd94d8a0d1b7d080",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-15T06:26:05+01:00",
+    "timestamp": 1773552365,
+    "subject": "chore(dc-init): recover interrupted update",
+    "refs": ""
+  },
+  {
+    "sha": "4cffa0c9bca24cc83538b66fcd94d8a0d1b7d080",
+    "short": "4cffa0c",
+    "parents": "cc541924e4aed167e89fdc1d7b5008ab9fcc1107",
+    "author": "XAOSTECH",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-13T21:55:57+01:00",
+    "timestamp": 1773435357,
+    "subject": "chore: clean up docs",
+    "refs": ""
+  },
+  {
+    "sha": "cc541924e4aed167e89fdc1d7b5008ab9fcc1107",
+    "short": "cc54192",
+    "parents": "04c92151caced2f5690c0b6bdaa914a01f72d757",
+    "author": "XAOSTECH",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-13T21:36:30+01:00",
+    "timestamp": 1773434190,
+    "subject": "chore(dc-init): update workflows and actions",
+    "refs": ""
+  },
+  {
+    "sha": "04c92151caced2f5690c0b6bdaa914a01f72d757",
+    "short": "04c9215",
+    "parents": "cf865cc76e626f50470cffb7bacce7cacc576d28",
+    "author": "XAOSTECH",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-13T21:25:47+01:00",
+    "timestamp": 1773433547,
+    "subject": "chore(dc-modules): see XAOSTECH/dev-control",
+    "refs": ""
+  },
+  {
+    "sha": "cf865cc76e626f50470cffb7bacce7cacc576d28",
+    "short": "cf865cc",
+    "parents": "b35b76b8f9db892cab9ad7a0a0d2a2d67e9a1608",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-13T03:41:52+01:00",
+    "timestamp": 1773369712,
+    "subject": "chore(dc-init): load container details",
+    "refs": ""
+  },
+  {
+    "sha": "b35b76b8f9db892cab9ad7a0a0d2a2d67e9a1608",
+    "short": "b35b76b",
+    "parents": "b0b4a456e4ee913903af49fb745652958aff92c3",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2026-03-06T05:33:47+01:00",
+    "timestamp": 1772771627,
+    "subject": "chore(dc-init): update workflows and actions",
+    "refs": ""
+  },
+  {
+    "sha": "b0b4a456e4ee913903af49fb745652958aff92c3",
+    "short": "b0b4a45",
+    "parents": "",
+    "author": "xaoscience",
+    "email": "69734795+xaoscience@users.noreply.github.com",
+    "date": "2025-12-21T17:12:28Z",
+    "timestamp": 1766337148,
+    "subject": "Initial commit",
+    "refs": ""
+  }
+],
+  "branches": [
+  {"name":"3c9f589da458b3363c0fc50393d2921d3ad311a1 chore(dc-init): load workflows,actions","sha":"*","current":false,"merged":false}
+],
+  "tags": [
+
+]
+}
