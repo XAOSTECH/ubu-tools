@@ -63,8 +63,8 @@
 - [Contributing](#-contributing)
 - [Roadmap](#-roadmap)
 - [Support](#-support)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
+- [Licence](#-licence)
+- [Acknowledgements](#-acknowledgements)
 
 ---
 
@@ -228,13 +228,13 @@ See the [open issues](https://github.com/xaoscience/ubu-tools/issues) for a full
 
 ---
 
-## 📄 License
+## 📄 Licence
 
 Distributed under the GPL-3.0 License. See [`LICENSE`](LICENSE) for more information.
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgements
 
 - {{ACKNOWLEDGMENT_1}}
 - {{ACKNOWLEDGMENT_2}}
