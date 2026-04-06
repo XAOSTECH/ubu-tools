@@ -3,10 +3,43 @@
     "repository": "ubu-tools",
     "current_branch": "main",
     "repo_url": "https://github.com/XAOSTECH/ubu-tools",
-    "generated": "2026-03-30T01:52:20Z",
+    "generated": "2026-04-06T01:52:28Z",
     "max_commits": 500
   },
   "commits": [
+  {
+    "sha": "f0c8340a1be97e2daada605741897ef9ede03554",
+    "short": "f0c8340",
+    "parents": "545fd82ce89c26681f2460db991dce3b0c7e2639 edd1bdf27ad9e2ddf857891d4cdc756472463679",
+    "author": "github-actions[bot]",
+    "email": "41898282+github-actions[bot]@users.noreply.github.com",
+    "date": "2026-04-01T00:51:11Z",
+    "timestamp": 1775004671,
+    "subject": "Merge pull request #1 from XAOSTECH/anglicise/20260401-005048",
+    "refs": "HEAD -> main, origin/main"
+  },
+  {
+    "sha": "edd1bdf27ad9e2ddf857891d4cdc756472463679",
+    "short": "edd1bdf",
+    "parents": "545fd82ce89c26681f2460db991dce3b0c7e2639",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-04-01T00:50:48Z",
+    "timestamp": 1775004648,
+    "subject": "chore: convert American spellings to British English",
+    "refs": ""
+  },
+  {
+    "sha": "545fd82ce89c26681f2460db991dce3b0c7e2639",
+    "short": "545fd82",
+    "parents": "3c9f589da458b3363c0fc50393d2921d3ad311a1",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-03-30T01:52:20Z",
+    "timestamp": 1774835540,
+    "subject": "chore: update git tree visualisation",
+    "refs": ""
+  },
   {
     "sha": "3c9f589da458b3363c0fc50393d2921d3ad311a1",
     "short": "3c9f589",
@@ -16,7 +49,7 @@
     "date": "2026-03-26T20:17:19+01:00",
     "timestamp": 1774552639,
     "subject": "chore(dc-init): load workflows,actions",
-    "refs": "HEAD -> main, origin/main"
+    "refs": ""
   },
   {
     "sha": "46799e9dbe726aa5a1023ff8c38a6caf134b1668",
@@ -130,7 +163,7 @@
   }
 ],
   "branches": [
-  {"name":"3c9f589da458b3363c0fc50393d2921d3ad311a1 chore(dc-init): load workflows,actions","sha":"*","current":false,"merged":false}
+  {"name":"f0c8340a1be97e2daada605741897ef9ede03554 Merge pull request #1 from XAOSTECH/anglicise/20260401-005048","sha":"*","current":false,"merged":false}
 ],
   "tags": [
 

@@ -3,10 +3,73 @@
     "repository": "ubu-tools",
     "current_branch": "main",
     "repo_url": "https://github.com/XAOSTECH/ubu-tools",
-    "generated": "2026-03-30T01:52:20Z",
+    "generated": "2026-04-06T01:52:28Z",
     "max_commits": 500
   },
   "commits": [
+    {
+      "sha": "f0c8340a1be97e2daada605741897ef9ede03554",
+      "short": "f0c8340",
+      "parents": "545fd82ce89c26681f2460db991dce3b0c7e2639 edd1bdf27ad9e2ddf857891d4cdc756472463679",
+      "author": "github-actions[bot]",
+      "email": "41898282+github-actions[bot]@users.noreply.github.com",
+      "date": "2026-04-01T00:51:11Z",
+      "timestamp": 1775004671,
+      "subject": "Merge pull request #1 from XAOSTECH/anglicise/20260401-005048",
+      "refs": "HEAD -> main, origin/main",
+      "position": {
+        "x": 600,
+        "y": 60,
+        "lane": 0,
+        "radius": 10,
+        "depth": 0,
+        "is_trunk": true,
+        "is_merge": true,
+        "is_fork": false
+      }
+    },
+    {
+      "sha": "edd1bdf27ad9e2ddf857891d4cdc756472463679",
+      "short": "edd1bdf",
+      "parents": "545fd82ce89c26681f2460db991dce3b0c7e2639",
+      "author": "xaos-bot",
+      "email": "262248812+xaos-bot@users.noreply.github.com",
+      "date": "2026-04-01T00:50:48Z",
+      "timestamp": 1775004648,
+      "subject": "chore: convert American spellings to British English",
+      "refs": "",
+      "position": {
+        "x": 720,
+        "y": 100,
+        "lane": 1,
+        "radius": 6,
+        "depth": 1,
+        "is_trunk": false,
+        "is_merge": false,
+        "is_fork": false
+      }
+    },
+    {
+      "sha": "545fd82ce89c26681f2460db991dce3b0c7e2639",
+      "short": "545fd82",
+      "parents": "3c9f589da458b3363c0fc50393d2921d3ad311a1",
+      "author": "xaos-bot",
+      "email": "262248812+xaos-bot@users.noreply.github.com",
+      "date": "2026-03-30T01:52:20Z",
+      "timestamp": 1774835540,
+      "subject": "chore: update git tree visualisation",
+      "refs": "",
+      "position": {
+        "x": 600,
+        "y": 180,
+        "lane": 0,
+        "radius": 9,
+        "depth": 2,
+        "is_trunk": true,
+        "is_merge": false,
+        "is_fork": true
+      }
+    },
     {
       "sha": "3c9f589da458b3363c0fc50393d2921d3ad311a1",
       "short": "3c9f589",
@@ -16,13 +79,13 @@
       "date": "2026-03-26T20:17:19+01:00",
       "timestamp": 1774552639,
       "subject": "chore(dc-init): load workflows,actions",
-      "refs": "HEAD -> main, origin/main",
+      "refs": "",
       "position": {
         "x": 600,
-        "y": 60,
+        "y": 220,
         "lane": 0,
         "radius": 6,
-        "depth": 0,
+        "depth": 3,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -40,10 +103,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 100,
+        "y": 260,
         "lane": 0,
         "radius": 6,
-        "depth": 1,
+        "depth": 4,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -61,10 +124,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 140,
+        "y": 300,
         "lane": 0,
         "radius": 6,
-        "depth": 2,
+        "depth": 5,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -82,10 +145,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 180,
+        "y": 340,
         "lane": 0,
         "radius": 6,
-        "depth": 3,
+        "depth": 6,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -103,10 +166,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 220,
+        "y": 380,
         "lane": 0,
         "radius": 6,
-        "depth": 4,
+        "depth": 7,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -124,10 +187,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 260,
+        "y": 420,
         "lane": 0,
         "radius": 6,
-        "depth": 5,
+        "depth": 8,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -145,10 +208,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 300,
+        "y": 460,
         "lane": 0,
         "radius": 6,
-        "depth": 6,
+        "depth": 9,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -166,10 +229,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 340,
+        "y": 500,
         "lane": 0,
         "radius": 6,
-        "depth": 7,
+        "depth": 10,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -187,10 +250,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 380,
+        "y": 540,
         "lane": 0,
         "radius": 6,
-        "depth": 8,
+        "depth": 11,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -208,10 +271,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 420,
+        "y": 580,
         "lane": 0,
         "radius": 6,
-        "depth": 9,
+        "depth": 12,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -229,10 +292,10 @@
       "refs": "",
       "position": {
         "x": 600,
-        "y": 460,
+        "y": 620,
         "lane": 0,
         "radius": 6,
-        "depth": 10,
+        "depth": 13,
         "is_trunk": true,
         "is_merge": false,
         "is_fork": false
@@ -241,7 +304,7 @@
   ],
   "branches": [
     {
-      "name": "3c9f589da458b3363c0fc50393d2921d3ad311a1 chore(dc-init): load workflows,actions",
+      "name": "f0c8340a1be97e2daada605741897ef9ede03554 Merge pull request #1 from XAOSTECH/anglicise/20260401-005048",
       "sha": "*",
       "current": false,
       "merged": false
