@@ -3,10 +3,21 @@
     "repository": "ubu-tools",
     "current_branch": "main",
     "repo_url": "https://github.com/XAOSTECH/ubu-tools",
-    "generated": "2026-04-06T01:52:28Z",
+    "generated": "2026-04-13T02:00:59Z",
     "max_commits": 500
   },
   "commits": [
+  {
+    "sha": "349614c7331bf3ed269e9868141eb2960598cf12",
+    "short": "349614c",
+    "parents": "f0c8340a1be97e2daada605741897ef9ede03554",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-04-06T01:52:28Z",
+    "timestamp": 1775440348,
+    "subject": "chore: update git tree visualisation",
+    "refs": "HEAD -> main, origin/main"
+  },
   {
     "sha": "f0c8340a1be97e2daada605741897ef9ede03554",
     "short": "f0c8340",
@@ -16,7 +27,7 @@
     "date": "2026-04-01T00:51:11Z",
     "timestamp": 1775004671,
     "subject": "Merge pull request #1 from XAOSTECH/anglicise/20260401-005048",
-    "refs": "HEAD -> main, origin/main"
+    "refs": ""
   },
   {
     "sha": "edd1bdf27ad9e2ddf857891d4cdc756472463679",
@@ -163,7 +174,7 @@
   }
 ],
   "branches": [
-  {"name":"f0c8340a1be97e2daada605741897ef9ede03554 Merge pull request #1 from XAOSTECH/anglicise/20260401-005048","sha":"*","current":false,"merged":false}
+  {"name":"349614c7331bf3ed269e9868141eb2960598cf12 chore: update git tree visualisation","sha":"*","current":false,"merged":false}
 ],
   "tags": [
 
