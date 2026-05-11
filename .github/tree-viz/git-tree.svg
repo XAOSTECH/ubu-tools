@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="1200" height="1060" 
-     viewBox="0 0 1200 1060">
+     width="1200" height="1100" 
+     viewBox="0 0 1200 1100">
   <defs>
     <radialGradient id="leafGradient">
       <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
@@ -29,28 +29,28 @@
     </style>
   </defs>
   
-  <rect width="1200" height="1060" fill="#f8fafc"/>
+  <rect width="1200" height="1100" fill="#f8fafc"/>
   <defs>
     <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
       <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.3"/>
     </pattern>
   </defs>
-  <rect width="1200" height="1060" fill="url(#grid)"/>
+  <rect width="1200" height="1100" fill="url(#grid)"/>
   
   <!-- Branch connection lines -->
   <g id="branches">
-    <line class="trunk-line" x1="600" y1="60" x2="600" y2="180"/>
-    <path class="branch-line" d="M 600 60 C 600 76, 720 84, 720 100"/>
-    <path class="branch-line" d="M 720 100 C 720 132, 600 148, 600 180"/>
-    <line class="trunk-line" x1="600" y1="180" x2="600" y2="300"/>
-    <path class="branch-line" d="M 600 180 C 600 196, 480 204, 480 220"/>
-    <path class="branch-line" d="M 480 220 C 480 252, 600 268, 600 300"/>
-    <line class="trunk-line" x1="600" y1="300" x2="600" y2="340"/>
+    <line class="trunk-line" x1="600" y1="60" x2="600" y2="100"/>
+    <line class="trunk-line" x1="600" y1="100" x2="600" y2="220"/>
+    <path class="branch-line" d="M 600 100 C 600 116, 720 124, 720 140"/>
+    <path class="branch-line" d="M 720 140 C 720 172, 600 188, 600 220"/>
+    <line class="trunk-line" x1="600" y1="220" x2="600" y2="340"/>
+    <path class="branch-line" d="M 600 220 C 600 236, 480 244, 480 260"/>
+    <path class="branch-line" d="M 480 260 C 480 292, 600 308, 600 340"/>
     <line class="trunk-line" x1="600" y1="340" x2="600" y2="380"/>
-    <line class="trunk-line" x1="600" y1="380" x2="600" y2="500"/>
-    <path class="branch-line" d="M 600 380 C 600 396, 840 404, 840 420"/>
-    <path class="branch-line" d="M 840 420 C 840 452, 600 468, 600 500"/>
-    <line class="trunk-line" x1="600" y1="500" x2="600" y2="540"/>
+    <line class="trunk-line" x1="600" y1="380" x2="600" y2="420"/>
+    <line class="trunk-line" x1="600" y1="420" x2="600" y2="540"/>
+    <path class="branch-line" d="M 600 420 C 600 436, 840 444, 840 460"/>
+    <path class="branch-line" d="M 840 460 C 840 492, 600 508, 600 540"/>
     <line class="trunk-line" x1="600" y1="540" x2="600" y2="580"/>
     <line class="trunk-line" x1="600" y1="580" x2="600" y2="620"/>
     <line class="trunk-line" x1="600" y1="620" x2="600" y2="660"/>
@@ -61,29 +61,31 @@
     <line class="trunk-line" x1="600" y1="820" x2="600" y2="860"/>
     <line class="trunk-line" x1="600" y1="860" x2="600" y2="900"/>
     <line class="trunk-line" x1="600" y1="900" x2="600" y2="940"/>
+    <line class="trunk-line" x1="600" y1="940" x2="600" y2="980"/>
   </g>
   <!-- Commit nodes -->
   <g id="commits">
-    <circle class="commit-leaf" cx="600" cy="60" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>19ab528: Merge pull request #3 from XAOSTECH/chore/update-submodules-20260427-020533</title></circle>
-    <circle class="commit-leaf" cx="720" cy="100" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>638c123: chore: update 1 submodule(s) to latest</title></circle>
-    <circle class="commit-leaf" cx="600" cy="180" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>8ea9e65: Merge pull request #2 from XAOSTECH/chore/update-submodules-20260420-020103</title></circle>
-    <circle class="commit-leaf" cx="480" cy="220" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>68580c6: chore: update 1 submodule(s) to latest</title></circle>
-    <circle class="commit-leaf" cx="600" cy="300" r="9" fill="url(#forkGradient)" stroke="#ea580c" stroke-width="1.5"><title>4abd5f9: chore: update git tree visualisation</title></circle>
-    <circle class="commit-leaf" cx="600" cy="340" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>349614c: chore: update git tree visualisation</title></circle>
-    <circle class="commit-leaf" cx="600" cy="380" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>f0c8340: Merge pull request #1 from XAOSTECH/anglicise/20260401-005048</title></circle>
-    <circle class="commit-leaf" cx="840" cy="420" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>edd1bdf: chore: convert American spellings to British English</title></circle>
-    <circle class="commit-leaf" cx="600" cy="500" r="9" fill="url(#forkGradient)" stroke="#ea580c" stroke-width="1.5"><title>545fd82: chore: update git tree visualisation</title></circle>
-    <circle class="commit-leaf" cx="600" cy="540" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>3c9f589: chore(dc-init): load workflows,actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="580" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>46799e9: chore(dc-init): load workflows,actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="620" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>4a9deae: chore(dc-init): load workflows,actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="660" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>2d426cc: chore(dc-init): update workflows,actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="700" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>9f31509: chore(dc-init): recover interrupted update</title></circle>
-    <circle class="commit-leaf" cx="600" cy="740" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>4cffa0c: chore: clean up docs</title></circle>
-    <circle class="commit-leaf" cx="600" cy="780" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>cc54192: chore(dc-init): update workflows and actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="820" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>04c9215: chore(dc-modules): see XAOSTECH/dev-control</title></circle>
-    <circle class="commit-leaf" cx="600" cy="860" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>cf865cc: chore(dc-init): load container details</title></circle>
-    <circle class="commit-leaf" cx="600" cy="900" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>b35b76b: chore(dc-init): update workflows and actions</title></circle>
-    <circle class="commit-leaf" cx="600" cy="940" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>b0b4a45: Initial commit</title></circle>
+    <circle class="commit-leaf" cx="600" cy="60" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>2f70361: chore: update git tree visualisation</title></circle>
+    <circle class="commit-leaf" cx="600" cy="100" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>19ab528: Merge pull request #3 from XAOSTECH/chore/update-submodules-20260427-020533</title></circle>
+    <circle class="commit-leaf" cx="720" cy="140" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>638c123: chore: update 1 submodule(s) to latest</title></circle>
+    <circle class="commit-leaf" cx="600" cy="220" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>8ea9e65: Merge pull request #2 from XAOSTECH/chore/update-submodules-20260420-020103</title></circle>
+    <circle class="commit-leaf" cx="480" cy="260" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>68580c6: chore: update 1 submodule(s) to latest</title></circle>
+    <circle class="commit-leaf" cx="600" cy="340" r="9" fill="url(#forkGradient)" stroke="#ea580c" stroke-width="1.5"><title>4abd5f9: chore: update git tree visualisation</title></circle>
+    <circle class="commit-leaf" cx="600" cy="380" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>349614c: chore: update git tree visualisation</title></circle>
+    <circle class="commit-leaf" cx="600" cy="420" r="10" fill="url(#mergeGradient)" stroke="#7c3aed" stroke-width="1.5"><title>f0c8340: Merge pull request #1 from XAOSTECH/anglicise/20260401-005048</title></circle>
+    <circle class="commit-leaf" cx="840" cy="460" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>edd1bdf: chore: convert American spellings to British English</title></circle>
+    <circle class="commit-leaf" cx="600" cy="540" r="9" fill="url(#forkGradient)" stroke="#ea580c" stroke-width="1.5"><title>545fd82: chore: update git tree visualisation</title></circle>
+    <circle class="commit-leaf" cx="600" cy="580" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>3c9f589: chore(dc-init): load workflows,actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="620" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>46799e9: chore(dc-init): load workflows,actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="660" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>4a9deae: chore(dc-init): load workflows,actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="700" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>2d426cc: chore(dc-init): update workflows,actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="740" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>9f31509: chore(dc-init): recover interrupted update</title></circle>
+    <circle class="commit-leaf" cx="600" cy="780" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>4cffa0c: chore: clean up docs</title></circle>
+    <circle class="commit-leaf" cx="600" cy="820" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>cc54192: chore(dc-init): update workflows and actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="860" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>04c9215: chore(dc-modules): see XAOSTECH/dev-control</title></circle>
+    <circle class="commit-leaf" cx="600" cy="900" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>cf865cc: chore(dc-init): load container details</title></circle>
+    <circle class="commit-leaf" cx="600" cy="940" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>b35b76b: chore(dc-init): update workflows and actions</title></circle>
+    <circle class="commit-leaf" cx="600" cy="980" r="6" fill="url(#leafGradient)" stroke="#16a34a" stroke-width="1.5"><title>b0b4a45: Initial commit</title></circle>
   </g>
   
   <!-- Legend -->
@@ -100,12 +102,12 @@
   </g>
   
   <!-- Repository info -->
-  <g id="info" transform="translate(20, 1020)">
+  <g id="info" transform="translate(20, 1060)">
     <text x="0" y="0" class="branch-label" font-size="12" fill="#666">
       Repository: ubu-tools
     </text>
     <text x="0" y="20" class="branch-label" font-size="10" fill="#999">
-      Generated: 2026-05-04 02:08:56 UTC
+      Generated: 2026-05-11 02:31:19 UTC
     </text>
   </g>
 </svg>
