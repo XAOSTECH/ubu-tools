@@ -3,10 +3,43 @@
     "repository": "ubu-tools",
     "current_branch": "main",
     "repo_url": "https://github.com/XAOSTECH/ubu-tools",
-    "generated": "2026-05-25T02:45:26Z",
+    "generated": "2026-06-08T02:52:59Z",
     "max_commits": 500
   },
   "commits": [
+  {
+    "sha": "04c295c4e49bb729491ec6d41ea4f2b07b0b96fd",
+    "short": "04c295c",
+    "parents": "9e359a5d12a3001e1556d80f1287b1fa590ea308 15311a58818c17c2a39281017d3a4917b332bff3",
+    "author": "github-actions[bot]",
+    "email": "41898282+github-actions[bot]@users.noreply.github.com",
+    "date": "2026-06-01T02:55:08Z",
+    "timestamp": 1780282508,
+    "subject": "Merge pull request #4 from XAOSTECH/chore/update-submodules-20260601-025450",
+    "refs": "HEAD -> main, origin/main"
+  },
+  {
+    "sha": "15311a58818c17c2a39281017d3a4917b332bff3",
+    "short": "15311a5",
+    "parents": "9e359a5d12a3001e1556d80f1287b1fa590ea308",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-06-01T02:54:50Z",
+    "timestamp": 1780282490,
+    "subject": "chore: update 1 submodule(s) to latest",
+    "refs": ""
+  },
+  {
+    "sha": "9e359a5d12a3001e1556d80f1287b1fa590ea308",
+    "short": "9e359a5",
+    "parents": "dfc5454b679a0e4148a43512b41dd3c4d25e812e",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-05-25T02:45:26Z",
+    "timestamp": 1779677126,
+    "subject": "chore: update git tree visualisation",
+    "refs": ""
+  },
   {
     "sha": "dfc5454b679a0e4148a43512b41dd3c4d25e812e",
     "short": "dfc5454",
@@ -16,7 +49,7 @@
     "date": "2026-05-18T02:39:23Z",
     "timestamp": 1779071963,
     "subject": "chore: update git tree visualisation",
-    "refs": "HEAD -> main, origin/main"
+    "refs": ""
   },
   {
     "sha": "3f22ca736c8d0e09c6ab69e3658219454a95c23a",
@@ -262,7 +295,7 @@
   }
 ],
   "branches": [
-  {"name":"dfc5454b679a0e4148a43512b41dd3c4d25e812e chore: update git tree visualisation","sha":"*","current":false,"merged":false}
+  {"name":"04c295c4e49bb729491ec6d41ea4f2b07b0b96fd Merge pull request #4 from XAOSTECH/chore/update-submodules-20260601-025450","sha":"*","current":false,"merged":false}
 ],
   "tags": [
 
