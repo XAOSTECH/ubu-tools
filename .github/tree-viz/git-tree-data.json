@@ -3,10 +3,21 @@
     "repository": "ubu-tools",
     "current_branch": "main",
     "repo_url": "https://github.com/XAOSTECH/ubu-tools",
-    "generated": "2026-07-13T02:03:34Z",
+    "generated": "2026-07-20T02:14:25Z",
     "max_commits": 500
   },
   "commits": [
+  {
+    "sha": "2cf5944c06314602118e5d27d97d89e3de2bfd18",
+    "short": "2cf5944",
+    "parents": "7b7f4a439f3b1402538f25c25743e5dd942c9705",
+    "author": "xaos-bot",
+    "email": "262248812+xaos-bot@users.noreply.github.com",
+    "date": "2026-07-13T02:03:34Z",
+    "timestamp": 1783908214,
+    "subject": "chore: update git tree visualisation",
+    "refs": "HEAD -> main, origin/main"
+  },
   {
     "sha": "7b7f4a439f3b1402538f25c25743e5dd942c9705",
     "short": "7b7f4a4",
@@ -16,7 +27,7 @@
     "date": "2026-07-06T02:30:23Z",
     "timestamp": 1783305023,
     "subject": "Merge pull request #5 from XAOSTECH/chore/update-submodules-20260706-023002",
-    "refs": "HEAD -> main, origin/main"
+    "refs": ""
   },
   {
     "sha": "101ea79c94da837b119fc585d2c7570c99dde264",
@@ -361,7 +372,7 @@
   }
 ],
   "branches": [
-  {"name":"7b7f4a439f3b1402538f25c25743e5dd942c9705 Merge pull request #5 from XAOSTECH/chore/update-submodules-20260706-023002","sha":"*","current":false,"merged":false}
+  {"name":"2cf5944c06314602118e5d27d97d89e3de2bfd18 chore: update git tree visualisation","sha":"*","current":false,"merged":false}
 ],
   "tags": [
 
