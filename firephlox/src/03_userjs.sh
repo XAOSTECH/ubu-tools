@@ -42,6 +42,8 @@ firephlox_apply_userjs() {
 			printf 'user_pref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 0);\n'
 			printf 'user_pref("datareporting.usage.uploadEnabled", false);\n'
 			printf 'user_pref("layers.acceleration.disabled", false);\n'
+			# Allows unsigned extensions in profile/extensions/ — bypasses snap signature enforcement.
+			printf 'user_pref("xpinstall.signatures.required", false);\n'
 			printf '%s\n' "${end}"
 		} >>"${tmp}"
 
