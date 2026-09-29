@@ -50,6 +50,7 @@ readonly FIREPHLOX_USER_PROFILES_DIR="${FIREPHLOX_USER_PROFILES_DIR:-${HOME}/sna
 FIREPHLOX_DRY_RUN=0
 FIREPHLOX_ASSUME_YES=0
 FIREPHLOX_SKIP_PURGE=0
+FIREPHLOX_SKIP_SHUFFLE=0
 
 usage() {
 	cat <<'USAGE'
@@ -61,6 +62,7 @@ Options:
   -n, --dry-run     Show every action without writing or deleting anything.
   -y, --yes         Assume "yes" for the cache-purge confirmation.
       --no-purge    Skip Task 3 (cache/telemetry purge) entirely.
+      --no-shuffle  Skip Task 4 (True Shuffle extension deployment).
   -h, --help        Show this help and exit.
 
 Tasks performed:
@@ -68,16 +70,19 @@ Tasks performed:
      and /var/snap/firefox/common/distribution/ (Ubuntu snap supplement).
   2. Harden the active profile via a managed user.js block.
   3. Safely purge datareporting, saved-telemetry-pings and crashes caches.
+  4. Deploy Apple Music True Shuffle as a native, self-contained WebExtension
+     via enterprise ExtensionSettings — no userscript manager required.
 USAGE
 }
 
 parse_args() {
 	while [[ $# -gt 0 ]]; do
 		case "$1" in
-			-n|--dry-run) FIREPHLOX_DRY_RUN=1 ;;
-			-y|--yes)     FIREPHLOX_ASSUME_YES=1 ;;
-			--no-purge)   FIREPHLOX_SKIP_PURGE=1 ;;
-			-h|--help)    usage; exit 0 ;;
+			-n|--dry-run)   FIREPHLOX_DRY_RUN=1 ;;
+			-y|--yes)       FIREPHLOX_ASSUME_YES=1 ;;
+			--no-purge)     FIREPHLOX_SKIP_PURGE=1 ;;
+			--no-shuffle)   FIREPHLOX_SKIP_SHUFFLE=1 ;;
+			-h|--help)      usage; exit 0 ;;
 			*) printf 'Unknown option: %s\n\n' "$1" >&2; usage; exit 2 ;;
 		esac
 		shift
@@ -100,7 +105,7 @@ main() {
 		source "${module}"
 	done
 
-	export FIREPHLOX_DRY_RUN FIREPHLOX_ASSUME_YES FIREPHLOX_SKIP_PURGE
+	export FIREPHLOX_DRY_RUN FIREPHLOX_ASSUME_YES FIREPHLOX_SKIP_PURGE FIREPHLOX_SKIP_SHUFFLE
 
 	firephlox_banner
 	firephlox_is_dry_run && firephlox_warn 'DRY-RUN mode: no files will be written or deleted.'
@@ -109,6 +114,7 @@ main() {
 	firephlox_apply_policies
 	firephlox_apply_userjs
 	firephlox_purge_caches
+	firephlox_deploy_shuffle
 	firephlox_verify
 
 	printf '\n'
