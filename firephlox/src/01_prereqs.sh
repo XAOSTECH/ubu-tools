@@ -28,10 +28,11 @@ firephlox_run_prereqs() {
 		firephlox_ok "Profile directory present: ${FIREPHLOX_USER_PROFILES_DIR}"
 	fi
 
-	# Flag early that the system surface may request sudo (Task 1 only).
-	if [[ ! -d "${FIREPHLOX_SNAP_VAR}" ]]; then
-		firephlox_warn "System path ${FIREPHLOX_SNAP_VAR} not found; it will be created (sudo may be requested)."
-	elif ! firephlox_path_writable "${FIREPHLOX_SNAP_COMMON}"; then
-		firephlox_info "System path ${FIREPHLOX_SNAP_COMMON} is root-owned; sudo will be requested for Task 1."
+	# Flag early whether either system surface will need sudo.
+	if ! firephlox_path_writable "${FIREPHLOX_ETC_POLICIES_DIR}"; then
+		firephlox_info "${FIREPHLOX_ETC_POLICIES_DIR} requires elevated privileges; sudo will be requested."
+	fi
+	if ! firephlox_path_writable "${FIREPHLOX_SNAP_COMMON}"; then
+		firephlox_info "${FIREPHLOX_SNAP_COMMON} requires elevated privileges; sudo will be requested."
 	fi
 }
