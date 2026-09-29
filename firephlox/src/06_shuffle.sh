@@ -23,7 +23,7 @@ tmp, js_src, ext_id = sys.argv[1], sys.argv[2], sys.argv[3]
 manifest = {
     "manifest_version": 2,
     "name": "Apple Music True Shuffle",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "True-random queue shuffle for Apple Music — no data collection, deployed by firephlox.",
     "browser_specific_settings": {
         "gecko": {"id": ext_id}
@@ -95,22 +95,33 @@ firephlox_deploy_shuffle() {
 	fi
 
 	local ext_id='apple-music-shuffle@firephlox'
+	# Primary XPI path — referenced by the ExtensionSettings force_install policy.
 	local xpi_path="${FIREPHLOX_SNAP_COMMON}/extensions/${ext_id}.xpi"
+	# Distribution XPI path — Firefox's bundled-distribution loading mechanism;
+	# separate from the policy path and works even if ExtensionSettings is ignored.
+	local xpi_dist="${FIREPHLOX_DISTRIBUTION_DIR}/extensions/${ext_id}.xpi"
 	local js_src="${FIREPHLOX_ROOT}/assets/shuffle.js"
 
 	[[ -f "${js_src}" ]] || firephlox_die "Missing asset: ${js_src}"
 
 	if firephlox_is_dry_run; then
 		firephlox_info "(dry-run) build XPI → ${xpi_path}"
+		firephlox_info "(dry-run) build XPI → ${xpi_dist} (distribution)"
 		firephlox_info "(dry-run) add ExtensionSettings → ${FIREPHLOX_ETC_POLICIES_FILE}"
 		firephlox_info "(dry-run) add ExtensionSettings → ${FIREPHLOX_SNAP_POLICIES_FILE}"
 		return 0
 	fi
 
 	_firephlox_shuffle_build_xpi "${xpi_path}" "${js_src}" "${ext_id}"
-	firephlox_ok "Extension XPI → ${xpi_path}"
+	local size_kb; size_kb="$(du -k "${xpi_path}" 2>/dev/null | cut -f1 || echo '?')"
+	firephlox_ok "Extension XPI (${size_kb}K) → ${xpi_path}"
+
+	_firephlox_shuffle_build_xpi "${xpi_dist}" "${js_src}" "${ext_id}"
+	firephlox_ok "Extension XPI (distribution) → ${xpi_dist}"
 
 	_firephlox_shuffle_add_policy "${FIREPHLOX_ETC_POLICIES_FILE}"  "${ext_id}" "${xpi_path}"
 	_firephlox_shuffle_add_policy "${FIREPHLOX_SNAP_POLICIES_FILE}" "${ext_id}" "${xpi_path}"
 	firephlox_ok "ExtensionSettings (force_installed) added to both policies.json files"
+
+	firephlox_info "Content script JS: ${js_src} ($(wc -c < "${js_src}") bytes)"
 }
