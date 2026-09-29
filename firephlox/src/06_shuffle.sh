@@ -95,10 +95,7 @@ firephlox_deploy_shuffle() {
 	fi
 
 	local ext_id='apple-music-shuffle@firephlox'
-	# User-owned path under $HOME — Firefox's file:// fetcher can reach this from
-	# within the snap sandbox; /var/snap/ is root-owned and cannot be fetched.
 	local xpi_path="${HOME}/snap/firefox/common/extensions/${ext_id}.xpi"
-	# Distribution copy — snap's bundled-distribution auto-load mechanism.
 	local xpi_dist="${FIREPHLOX_DISTRIBUTION_DIR}/extensions/${ext_id}.xpi"
 	local js_src="${FIREPHLOX_ROOT}/assets/shuffle.js"
 
@@ -114,23 +111,32 @@ firephlox_deploy_shuffle() {
 
 	_firephlox_shuffle_build_xpi "${xpi_path}" "${js_src}" "${ext_id}"
 	local size_kb; size_kb="$(du -k "${xpi_path}" 2>/dev/null | cut -f1 || echo '?')"
-	firephlox_ok "Extension XPI (${size_kb}K) → ${xpi_path}"
-	firephlox_info "install_url will be: file://${xpi_path}"
 
+	# Use the signed XPI for all deployments if available (Task 5 produces it).
+	local deploy_xpi="${xpi_path}"
+	if [[ -f "${FIREPHLOX_SIGNED_XPI:-}" ]]; then
+		deploy_xpi="${FIREPHLOX_SIGNED_XPI}"
+		firephlox_ok "Signed XPI (${size_kb}K) → ${xpi_path} (unsigned copy also built)"
+		firephlox_ok "Using signed XPI: ${deploy_xpi}"
+	else
+		firephlox_ok "Extension XPI (${size_kb}K) → ${xpi_path} ${FP_DIM}(unsigned — run --sign to fix)${FP_RESET}"
+		firephlox_info "install_url will be: file://${xpi_path}"
+	fi
+
+	cp "${deploy_xpi}" "${xpi_path}"
 	_firephlox_shuffle_build_xpi "${xpi_dist}" "${js_src}" "${ext_id}"
+	[[ -f "${FIREPHLOX_SIGNED_XPI:-}" ]] && cp "${deploy_xpi}" "${xpi_dist}"
 	firephlox_ok "Extension XPI (distribution) → ${xpi_dist}"
 
 	_firephlox_shuffle_add_policy "${FIREPHLOX_ETC_POLICIES_FILE}"  "${ext_id}" "${xpi_path}"
 	_firephlox_shuffle_add_policy "${FIREPHLOX_SNAP_POLICIES_FILE}" "${ext_id}" "${xpi_path}"
 	firephlox_ok "ExtensionSettings (force_installed) added to both policies.json files"
 
-	# Deploy directly to each profile's extensions/ directory — auto-loaded by
-	# Firefox when xpinstall.signatures.required=false (set above in user.js).
 	local -a profiles
 	mapfile -t profiles < <(firephlox_discover_profiles)
 	for profile in "${profiles[@]}"; do
 		firephlox_mkdir "${profile}/extensions"
-		install -m 0644 "${xpi_path}" "${profile}/extensions/${ext_id}.xpi"
+		install -m 0644 "${deploy_xpi}" "${profile}/extensions/${ext_id}.xpi"
 		firephlox_ok "Extension XPI (profile) → ${profile}/extensions/${ext_id}.xpi"
 	done
 
