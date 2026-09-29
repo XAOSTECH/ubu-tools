@@ -2,8 +2,7 @@
 # 06_shuffle.sh — Task 4: deploy the Apple Music True Shuffle as a native
 # WebExtension via enterprise ExtensionSettings policy.
 #
-# Extensions installed through enterprise policies are not required to be
-# signed by Mozilla, bypassing the need for any userscript manager.
+# Extensions installed through enterprise policies are not required to be signed by Mozilla, bypassing the need for any userscript manager.
 # Source: https://github.com/mozilla/policy-templates
 
 # _firephlox_shuffle_build_xpi <dest_xpi> <js_src> <ext_id>
@@ -24,7 +23,7 @@ tmp, js_src, ext_id = sys.argv[1], sys.argv[2], sys.argv[3]
 manifest = {
     "manifest_version": 2,
     "name": "Apple Music True Shuffle",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "True-random queue shuffle for Apple Music — no data collection, deployed by firephlox.",
     "browser_specific_settings": {
         "gecko": {"id": ext_id}
@@ -53,8 +52,7 @@ PYTHON
 }
 
 # _firephlox_shuffle_add_policy <policies_file> <ext_id> <xpi_path>
-# Merges an ExtensionSettings force_installed entry into the given policies.json,
-# reading and writing via sudo when the file is root-owned.
+# Merges an ExtensionSettings force_installed entry into the given policies.json, reading and writing via sudo when the file is root-owned.
 _firephlox_shuffle_add_policy() {
 	local policies_file="$1" ext_id="$2" xpi_path="$3"
 	[[ -f "${policies_file}" ]] || {
