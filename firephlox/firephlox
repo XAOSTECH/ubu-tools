@@ -7,10 +7,14 @@
 # We operate on the Fire(fox) exactly as the good doctor would: precisely,
 # and strictly within the writable boundaries of the Snap sandbox.
 #
-#   • System policies : /var/snap/firefox/common/
-#   • User profiles   : ~/snap/firefox/common/.mozilla/firefox/
+#   • System policies (standard Linux path):
+#       /etc/firefox/policies/policies.json          ← documented by Mozilla
+#   • System policies (Ubuntu snap supplementary path):
+#       /var/snap/firefox/common/distribution/policies.json
+#   • User profiles: ~/snap/firefox/common/.mozilla/firefox/
 #
-# The read-only /snap/firefox/current tree and the AppArmor profiles are never touched, so the browser stays fully confined.
+# Source: https://firefox-admin-docs.mozilla.org/guides/policies-configuration/
+# The read-only /snap/firefox/current tree and AppArmor profiles are never touched.
 
 set -euo pipefail
 
@@ -19,14 +23,27 @@ readonly FIREPHLOX_ROOT
 readonly FIREPHLOX_LIB_DIR="${FIREPHLOX_ROOT}/lib"
 readonly FIREPHLOX_SRC_DIR="${FIREPHLOX_ROOT}/src"
 
-# --- Snap path map (writable surfaces only) -----------------------------
-# The two base paths honour an environment override (defaults unchanged) so the tool can be exercised against a sandbox during testing or packaging.
+# --- Path map -----------------------------------------------------------
+# All base paths honour environment overrides so the tool can be tested
+# against a sandbox without touching the live system.
+#
+# Primary policy path (documented by Mozilla for all Linux distributions):
+readonly FIREPHLOX_ETC_POLICIES_DIR="${FIREPHLOX_ETC_POLICIES_DIR:-/etc/firefox/policies}"
+readonly FIREPHLOX_ETC_POLICIES_FILE="${FIREPHLOX_ETC_POLICIES_DIR}/policies.json"
+#
+# Supplementary path used by the Ubuntu Snap packaging of Firefox.
+# Not documented by Mozilla; present because Canonical's snap recipe
+# configures Firefox to also search this location.
 readonly FIREPHLOX_SNAP_VAR="${FIREPHLOX_SNAP_VAR:-/var/snap/firefox}"
 readonly FIREPHLOX_SNAP_COMMON="${FIREPHLOX_SNAP_VAR}/common"
 readonly FIREPHLOX_DISTRIBUTION_DIR="${FIREPHLOX_SNAP_COMMON}/distribution"
-readonly FIREPHLOX_POLICIES_FILE="${FIREPHLOX_DISTRIBUTION_DIR}/policies.json"
-readonly FIREPHLOX_CFG_FILE="${FIREPHLOX_SNAP_COMMON}/mozilla.cfg"
-readonly FIREPHLOX_AUTOCONFIG_FILE="${FIREPHLOX_SNAP_COMMON}/defaults/pref/autoconfig.js"
+readonly FIREPHLOX_SNAP_POLICIES_FILE="${FIREPHLOX_DISTRIBUTION_DIR}/policies.json"
+#
+# NOTE: mozilla.cfg / autoconfig.js are NOT written.
+# The snap's defaults/pref/ lives under read-only /snap/firefox/current/;
+# placing an autoconfig pointer in /var/snap/firefox/common/defaults/pref/
+# has no effect because Firefox never reads from that location.
+#
 readonly FIREPHLOX_USER_PROFILES_DIR="${FIREPHLOX_USER_PROFILES_DIR:-${HOME}/snap/firefox/common/.mozilla/firefox}"
 
 # --- Runtime flags -------------------------------------------------------
@@ -47,7 +64,8 @@ Options:
   -h, --help        Show this help and exit.
 
 Tasks performed:
-  1. Inject enterprise policies.json + mozilla.cfg under /var/snap/firefox/common.
+  1. Write policies.json to /etc/firefox/policies/ (documented Mozilla path)
+     and /var/snap/firefox/common/distribution/ (Ubuntu snap supplement).
   2. Harden the active profile via a managed user.js block.
   3. Safely purge datareporting, saved-telemetry-pings and crashes caches.
 USAGE
