@@ -26,6 +26,14 @@ _firephlox_policies_json() {
     "DisableTelemetry": true,
     "DisableFirefoxStudies": true,
     "Preferences": {
+      "extensions.enabled": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "xpinstall.enabled": {
+        "Value": true,
+        "Status": "locked"
+      },
       "toolkit.telemetry.cachedClientID": {
         "Value": "00000000-0000-0000-0000-000000000000",
         "Status": "locked"
