@@ -60,4 +60,38 @@ firephlox_verify() {
 
 	firephlox_info 'Primary enforcement: /etc/firefox/policies/policies.json (Mozilla-documented).'
 	firephlox_info 'Supplementary:      /var/snap/firefox/common/distribution/policies.json (Ubuntu snap).'
+
+	# --- Extension XPI presence ------------------------------------------
+	local ext_id='apple-music-shuffle@firephlox'
+	local xpi_a="${FIREPHLOX_SNAP_COMMON}/extensions/${ext_id}.xpi"
+	local xpi_b="${FIREPHLOX_DISTRIBUTION_DIR}/extensions/${ext_id}.xpi"
+	for xpi in "${xpi_a}" "${xpi_b}"; do
+		if [[ -f "${xpi}" ]]; then
+			local kb; kb="$(du -k "${xpi}" 2>/dev/null | cut -f1 || echo '?')"
+			firephlox_ok "XPI present (${kb}K): ${xpi}"
+		else
+			firephlox_warn "XPI missing: ${xpi}"
+		fi
+	done
+
+	# --- Post-restart diagnostic checklist --------------------------------
+	firephlox_section 'What to check AFTER a full Firefox restart'
+	printf '\n'
+	printf '  %s1. about:policies%s\n' "${FP_BOLD}" "${FP_RESET}"
+	printf '     %sExpect:%s DisableTelemetry → true, ExtensionSettings → apple-music-shuffle@firephlox\n' "${FP_DIM}" "${FP_RESET}"
+	printf '     %sIf empty or missing:%s the policy files are not being loaded at all.\n' "${FP_YELLOW}" "${FP_RESET}"
+	printf '     Check about:support → Policies section for errors.\n\n'
+	printf '  %s2. about:addons%s\n' "${FP_BOLD}" "${FP_RESET}"
+	printf '     %sExpect:%s "Apple Music True Shuffle" listed as Managed (cannot be removed).\n' "${FP_DIM}" "${FP_RESET}"
+	printf '     %sIf absent:%s the extension is blocked. Likely cause: extensions.enabled or\n' "${FP_YELLOW}" "${FP_RESET}"
+	printf '     xpinstall.enabled is false in your profile prefs — re-run firephlox to lock\n'
+	printf '     them, then do a FULL quit (kill any tray instance) and relaunch.\n\n'
+	printf '  %s3. Browser console on music.apple.com%s\n' "${FP_BOLD}" "${FP_RESET}"
+	printf '     %sExpect:%s [firephlox shuffle] content script loaded on https://music.apple.com/...\n' "${FP_DIM}" "${FP_RESET}"
+	printf '     %sIf absent:%s extension is installed but the content script is not running.\n' "${FP_YELLOW}" "${FP_RESET}"
+	printf '     Open console, filter by "[firephlox". Strict Enhanced Tracking Protection\n'
+	printf '     does NOT block WebExtension content scripts — check about:addons instead.\n\n'
+	printf '  %s4. Quick check from terminal:%s\n' "${FP_BOLD}" "${FP_RESET}"
+	printf '     %spython3 -c "import json; d=json.load(open('"'"'%s'"'"')); print(list(d['"'"'policies'"'"']['"'"'ExtensionSettings'"'"'].keys()))" %s\n' \
+		"${FP_DIM}" "${FIREPHLOX_ETC_POLICIES_FILE}" "${FP_RESET}"
 }
