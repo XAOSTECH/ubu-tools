@@ -7,40 +7,33 @@ firephlox_verify() {
 
 	if firephlox_is_dry_run; then
 		firephlox_info '(dry-run) Would verify the following mapped paths:'
-		firephlox_info "  ${FIREPHLOX_POLICIES_FILE}"
-		firephlox_info "  ${FIREPHLOX_CFG_FILE}"
-		firephlox_info "  ${FIREPHLOX_AUTOCONFIG_FILE}"
+		firephlox_info "  ${FIREPHLOX_ETC_POLICIES_FILE}"
+		firephlox_info "  ${FIREPHLOX_SNAP_POLICIES_FILE}"
 		firephlox_info "  ${FIREPHLOX_USER_PROFILES_DIR}/<profile>/user.js"
 		return 0
 	fi
 
 	local ok=1
 
-	# --- Task 1 artefacts ------------------------------------------------
-	if [[ -f "${FIREPHLOX_POLICIES_FILE}" ]]; then
-		firephlox_ok "policies.json present: ${FIREPHLOX_POLICIES_FILE}"
-		if command -v python3 >/dev/null 2>&1; then
-			if python3 -c 'import json,sys; json.load(open(sys.argv[1]))' "${FIREPHLOX_POLICIES_FILE}" 2>/dev/null; then
-				firephlox_ok 'policies.json is valid JSON.'
-			else
-				firephlox_error 'policies.json is NOT valid JSON.'; ok=0
+	_verify_policies_file() {
+		local path="$1" label="$2"
+		if [[ -f "${path}" ]]; then
+			firephlox_ok "${label} present: ${path}"
+			if command -v python3 >/dev/null 2>&1; then
+				if python3 -c 'import json,sys; json.load(open(sys.argv[1]))' "${path}" 2>/dev/null; then
+					firephlox_ok "${label} is valid JSON."
+				else
+					firephlox_error "${label} is NOT valid JSON."; ok=0
+				fi
 			fi
+		else
+			firephlox_error "${label} missing: ${path}"; ok=0
 		fi
-	else
-		firephlox_error "policies.json missing: ${FIREPHLOX_POLICIES_FILE}"; ok=0
-	fi
+	}
 
-	if [[ -f "${FIREPHLOX_CFG_FILE}" ]]; then
-		firephlox_ok "mozilla.cfg present: ${FIREPHLOX_CFG_FILE}"
-	else
-		firephlox_error "mozilla.cfg missing: ${FIREPHLOX_CFG_FILE}"; ok=0
-	fi
-
-	if [[ -f "${FIREPHLOX_AUTOCONFIG_FILE}" ]]; then
-		firephlox_ok "autoconfig.js present: ${FIREPHLOX_AUTOCONFIG_FILE}"
-	else
-		firephlox_error "autoconfig.js missing: ${FIREPHLOX_AUTOCONFIG_FILE}"; ok=0
-	fi
+	# --- Task 1 artefacts ------------------------------------------------
+	_verify_policies_file "${FIREPHLOX_ETC_POLICIES_FILE}"  'policies.json (/etc)'
+	_verify_policies_file "${FIREPHLOX_SNAP_POLICIES_FILE}" 'policies.json (snap)'
 
 	# --- Task 2 artefacts ------------------------------------------------
 	local -a profiles
@@ -65,5 +58,6 @@ firephlox_verify() {
 		firephlox_die 'One or more configuration artefacts are missing. Review the log above.'
 	fi
 
-	firephlox_info 'Enforced via Enterprise Policies (policies.json). mozilla.cfg is a traditional fallback, subject to the Snap AutoConfig search path.'
+	firephlox_info 'Primary enforcement: /etc/firefox/policies/policies.json (Mozilla-documented).'
+	firephlox_info 'Supplementary:      /var/snap/firefox/common/distribution/policies.json (Ubuntu snap).'
 }
