@@ -47,6 +47,7 @@ FIREPHLOX_DRY_RUN=0
 FIREPHLOX_ASSUME_YES=0
 FIREPHLOX_SKIP_PURGE=0
 FIREPHLOX_SKIP_SHUFFLE=0
+FIREPHLOX_SIGN=0
 
 usage() {
 	cat <<'USAGE'
@@ -59,6 +60,10 @@ Options:
   -y, --yes         Assume "yes" for the cache-purge confirmation.
       --no-purge    Skip Task 3 (cache/telemetry purge) entirely.
       --no-shuffle  Skip Task 4 (True Shuffle extension deployment).
+      --sign        Sign the extension via Mozilla AMO (Task 5). Required once
+                   for Firefox Release. Get credentials at addons.mozilla.org.
+      --amo-key=    AMO API Key  (or set FIREPHLOX_AMO_KEY env var).
+      --amo-secret= AMO API Secret (or set FIREPHLOX_AMO_SECRET env var).
   -h, --help        Show this help and exit.
 
 Tasks performed:
@@ -68,6 +73,8 @@ Tasks performed:
   3. Safely purge datareporting, saved-telemetry-pings and crashes caches.
   4. Deploy Apple Music True Shuffle as a native, self-contained WebExtension
      via enterprise ExtensionSettings — no userscript manager required.
+  5. (Optional, --sign) Sign the extension via AMO so Firefox Release will load
+     it. Only needed once; the signed XPI is cached in ~/.cache/firephlox/.
 USAGE
 }
 
@@ -78,6 +85,9 @@ parse_args() {
 			-y|--yes)       FIREPHLOX_ASSUME_YES=1 ;;
 			--no-purge)     FIREPHLOX_SKIP_PURGE=1 ;;
 			--no-shuffle)   FIREPHLOX_SKIP_SHUFFLE=1 ;;
+			--sign)         FIREPHLOX_SIGN=1 ;;
+			--amo-key=*)    FIREPHLOX_AMO_KEY="${1#*=}" ;;
+			--amo-secret=*) FIREPHLOX_AMO_SECRET="${1#*=}" ;;
 			-h|--help)      usage; exit 0 ;;
 			*) printf 'Unknown option: %s\n\n' "$1" >&2; usage; exit 2 ;;
 		esac
@@ -101,7 +111,7 @@ main() {
 		source "${module}"
 	done
 
-	export FIREPHLOX_DRY_RUN FIREPHLOX_ASSUME_YES FIREPHLOX_SKIP_PURGE FIREPHLOX_SKIP_SHUFFLE
+	export FIREPHLOX_DRY_RUN FIREPHLOX_ASSUME_YES FIREPHLOX_SKIP_PURGE FIREPHLOX_SKIP_SHUFFLE FIREPHLOX_SIGN FIREPHLOX_AMO_KEY FIREPHLOX_AMO_SECRET FIREPHLOX_SIGNED_XPI
 
 	firephlox_banner
 	firephlox_is_dry_run && firephlox_warn 'DRY-RUN mode: no files will be written or deleted.'
@@ -110,6 +120,7 @@ main() {
 	firephlox_apply_policies
 	firephlox_apply_userjs
 	firephlox_purge_caches
+	firephlox_sign_amo
 	firephlox_deploy_shuffle
 	firephlox_verify
 
