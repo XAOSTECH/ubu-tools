@@ -95,10 +95,10 @@ firephlox_deploy_shuffle() {
 	fi
 
 	local ext_id='apple-music-shuffle@firephlox'
-	# Primary XPI path — referenced by the ExtensionSettings force_install policy.
-	local xpi_path="${FIREPHLOX_SNAP_COMMON}/extensions/${ext_id}.xpi"
-	# Distribution XPI path — Firefox's bundled-distribution loading mechanism;
-	# separate from the policy path and works even if ExtensionSettings is ignored.
+	# User-owned path under $HOME — Firefox's file:// fetcher can reach this from
+	# within the snap sandbox; /var/snap/ is root-owned and cannot be fetched.
+	local xpi_path="${HOME}/snap/firefox/common/extensions/${ext_id}.xpi"
+	# Distribution copy — snap's bundled-distribution auto-load mechanism.
 	local xpi_dist="${FIREPHLOX_DISTRIBUTION_DIR}/extensions/${ext_id}.xpi"
 	local js_src="${FIREPHLOX_ROOT}/assets/shuffle.js"
 
@@ -115,6 +115,7 @@ firephlox_deploy_shuffle() {
 	_firephlox_shuffle_build_xpi "${xpi_path}" "${js_src}" "${ext_id}"
 	local size_kb; size_kb="$(du -k "${xpi_path}" 2>/dev/null | cut -f1 || echo '?')"
 	firephlox_ok "Extension XPI (${size_kb}K) → ${xpi_path}"
+	firephlox_info "install_url will be: file://${xpi_path}"
 
 	_firephlox_shuffle_build_xpi "${xpi_dist}" "${js_src}" "${ext_id}"
 	firephlox_ok "Extension XPI (distribution) → ${xpi_dist}"

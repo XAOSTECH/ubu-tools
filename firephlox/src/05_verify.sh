@@ -63,7 +63,7 @@ firephlox_verify() {
 
 	# --- Extension XPI presence ------------------------------------------
 	local ext_id='apple-music-shuffle@firephlox'
-	local xpi_a="${FIREPHLOX_SNAP_COMMON}/extensions/${ext_id}.xpi"
+	local xpi_a="${HOME}/snap/firefox/common/extensions/${ext_id}.xpi"
 	local xpi_b="${FIREPHLOX_DISTRIBUTION_DIR}/extensions/${ext_id}.xpi"
 	for xpi in "${xpi_a}" "${xpi_b}"; do
 		if [[ -f "${xpi}" ]]; then
@@ -83,9 +83,9 @@ firephlox_verify() {
 	printf '     Check about:support → Policies section for errors.\n\n'
 	printf '  %s2. about:addons%s\n' "${FP_BOLD}" "${FP_RESET}"
 	printf '     %sExpect:%s "Apple Music True Shuffle" listed as Managed (cannot be removed).\n' "${FP_DIM}" "${FP_RESET}"
-	printf '     %sIf absent:%s the extension is blocked. Likely cause: extensions.enabled or\n' "${FP_YELLOW}" "${FP_RESET}"
-	printf '     xpinstall.enabled is false in your profile prefs — re-run firephlox to lock\n'
-	printf '     them, then do a FULL quit (kill any tray instance) and relaunch.\n\n'
+	printf '     %sIf absent + ExtensionSettings shows "Not fully applied":%s the install_url\n' "${FP_YELLOW}" "${FP_RESET}"
+	printf '     could not be fetched. Verify the XPI path above starts with file:///home/\n'
+	printf '     (not /var/snap/ — that is root-owned and outside snap file:// scope).\n\n'
 	printf '  %s3. Browser console on music.apple.com%s\n' "${FP_BOLD}" "${FP_RESET}"
 	printf '     %sExpect:%s [firephlox shuffle] content script loaded on https://music.apple.com/...\n' "${FP_DIM}" "${FP_RESET}"
 	printf '     %sIf absent:%s extension is installed but the content script is not running.\n' "${FP_YELLOW}" "${FP_RESET}"
