@@ -124,5 +124,15 @@ firephlox_deploy_shuffle() {
 	_firephlox_shuffle_add_policy "${FIREPHLOX_SNAP_POLICIES_FILE}" "${ext_id}" "${xpi_path}"
 	firephlox_ok "ExtensionSettings (force_installed) added to both policies.json files"
 
+	# Deploy directly to each profile's extensions/ directory — auto-loaded by
+	# Firefox when xpinstall.signatures.required=false (set above in user.js).
+	local -a profiles
+	mapfile -t profiles < <(firephlox_discover_profiles)
+	for profile in "${profiles[@]}"; do
+		firephlox_mkdir "${profile}/extensions"
+		install -m 0644 "${xpi_path}" "${profile}/extensions/${ext_id}.xpi"
+		firephlox_ok "Extension XPI (profile) → ${profile}/extensions/${ext_id}.xpi"
+	done
+
 	firephlox_info "Content script JS: ${js_src} ($(wc -c < "${js_src}") bytes)"
 }
