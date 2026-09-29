@@ -4,8 +4,7 @@
 #
 #   "There's nothing more satisfying than a healthy patient." — Dr. Phlox
 #
-# We operate on the Fire(fox) exactly as the good doctor would: precisely,
-# and strictly within the writable boundaries of the Snap sandbox.
+# We operate on the (fire)fox exactly as the good doctor would: precisely and strictly within the writable boundaries of the Snap sandbox.
 #
 #   • System policies (standard Linux path):
 #       /etc/firefox/policies/policies.json          ← documented by Mozilla
@@ -24,16 +23,14 @@ readonly FIREPHLOX_LIB_DIR="${FIREPHLOX_ROOT}/lib"
 readonly FIREPHLOX_SRC_DIR="${FIREPHLOX_ROOT}/src"
 
 # --- Path map -----------------------------------------------------------
-# All base paths honour environment overrides so the tool can be tested
-# against a sandbox without touching the live system.
+# All base paths honour environment overrides so the tool can be tested against a sandbox without touching the live system.
 #
 # Primary policy path (documented by Mozilla for all Linux distributions):
 readonly FIREPHLOX_ETC_POLICIES_DIR="${FIREPHLOX_ETC_POLICIES_DIR:-/etc/firefox/policies}"
 readonly FIREPHLOX_ETC_POLICIES_FILE="${FIREPHLOX_ETC_POLICIES_DIR}/policies.json"
 #
 # Supplementary path used by the Ubuntu Snap packaging of Firefox.
-# Not documented by Mozilla; present because Canonical's snap recipe
-# configures Firefox to also search this location.
+# Not documented by Mozilla; present because Canonical's snap recipe configures Firefox to also search this location.
 readonly FIREPHLOX_SNAP_VAR="${FIREPHLOX_SNAP_VAR:-/var/snap/firefox}"
 readonly FIREPHLOX_SNAP_COMMON="${FIREPHLOX_SNAP_VAR}/common"
 readonly FIREPHLOX_DISTRIBUTION_DIR="${FIREPHLOX_SNAP_COMMON}/distribution"
@@ -41,8 +38,7 @@ readonly FIREPHLOX_SNAP_POLICIES_FILE="${FIREPHLOX_DISTRIBUTION_DIR}/policies.js
 #
 # NOTE: mozilla.cfg / autoconfig.js are NOT written.
 # The snap's defaults/pref/ lives under read-only /snap/firefox/current/;
-# placing an autoconfig pointer in /var/snap/firefox/common/defaults/pref/
-# has no effect because Firefox never reads from that location.
+# placing an autoconfig pointer in /var/snap/firefox/common/defaults/pref/ has no effect because Firefox never reads from that location.
 #
 readonly FIREPHLOX_USER_PROFILES_DIR="${FIREPHLOX_USER_PROFILES_DIR:-${HOME}/snap/firefox/common/.mozilla/firefox}"
 

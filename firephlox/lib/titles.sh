@@ -23,7 +23,7 @@ firephlox_banner() {
 	firephlox__banner_row "${width}" 'F I R E P H L O X'
 	firephlox__banner_row "${width}" 'Telemetry surgery for Snap-confined Firefox'
 	printf '  %s%s╚%s╝%s\n' "${FP_MAGENTA}" "${FP_BOLD}" "${bar}" "${FP_RESET}"
-	printf '  %sDr. Phlox operating on the fox. — hold still.%s\n\n' "${FP_DIM}" "${FP_RESET}"
+	printf '  %sDr. Phlox is operating on the fox - hold still.%s\n\n' "${FP_DIM}" "${FP_RESET}"
 }
 
 # firephlox_section <title> — a labelled divider between tasks.
