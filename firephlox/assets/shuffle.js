@@ -4,6 +4,7 @@
     'use strict';
 
     const TAG = '[firephlox shuffle]';
+    let _observerCalls = 0;
 
     /* Durstenfeld / Fisher-Yates in-place shuffle — statistically unbiased. */
     function trueShuffle(arr) {
@@ -15,11 +16,10 @@
     }
 
     /*
-     * Selector strategy (from live DOM inspection):
+     * Selector strategy (from live DOM inspection of music.apple.com):
      *  1. [data-testid="player-bar"] .action-buttons  — right-side actions row
-     *     (holds lyrics / up-next / volume, open flex space, stable data-testid)
      *  2. [data-testid="playback-controls"]            — centre controls row
-     *  3. Fixed floating pill as absolute last resort
+     *  3. Fixed floating pill anchored near the player bar as last resort
      */
     function findContainer() {
         const bar = document.querySelector('[data-testid="player-bar"]');
@@ -28,7 +28,6 @@
             || document.querySelector('[data-testid="playback-controls"]');
     }
 
-    /* Returns a fixed floating container when no player bar is found yet. */
     function getOrCreateFloater() {
         let f = document.getElementById('fp-shuffle-floater');
         if (!f) {
@@ -36,7 +35,7 @@
             f.id = 'fp-shuffle-floater';
             f.style.cssText = 'position:fixed;bottom:16px;right:80px;z-index:99999';
             document.body.appendChild(f);
-            console.log(TAG, 'player bar not found — using fixed floater');
+            console.warn(TAG, 'player bar not found — injecting as fixed floater');
         }
         return f;
     }
@@ -45,6 +44,8 @@
         if (document.getElementById('fp-true-shuffle-btn')) return;
 
         const container = findContainer() || getOrCreateFloater();
+        const containerDesc = container.dataset.testid || container.className || container.id;
+        console.log(TAG, 'injecting button into:', containerDesc);
 
         const btn       = document.createElement('button');
         btn.id          = 'fp-true-shuffle-btn';
@@ -69,6 +70,7 @@
 
         btn.addEventListener('click', async () => {
             const mk = window.MusicKit?.getInstance();
+            console.log(TAG, 'click — MusicKit instance:', mk ? 'found' : 'NOT FOUND');
             if (!mk) {
                 alert('MusicKit not ready — wait for the page to fully load.');
                 return;
@@ -102,12 +104,24 @@
         });
 
         container.appendChild(btn);
-        console.log(TAG, 'button injected into', container.dataset.testid || container.className);
+    }
+
+    function onMutation() {
+        _observerCalls++;
+        /* Log every 50th observer call so the console isn't flooded. */
+        if (_observerCalls % 50 === 1) {
+            const bar       = document.querySelector('[data-testid="player-bar"]');
+            const mk        = typeof window.MusicKit !== 'undefined';
+            console.log(TAG, `observer call #${_observerCalls} — player-bar: ${bar ? 'found' : 'absent'}, MusicKit: ${mk ? 'present' : 'absent'}`);
+        }
+        injectButton();
     }
 
     console.log(TAG, 'content script loaded on', location.href);
-    new MutationObserver(injectButton)
+    console.log(TAG, 'MusicKit available on load:', typeof window.MusicKit !== 'undefined');
+    new MutationObserver(onMutation)
         .observe(document.body, { childList: true, subtree: true });
     injectButton();
 })();
+
 
