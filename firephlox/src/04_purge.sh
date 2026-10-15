@@ -1,7 +1,5 @@
 # shellcheck shell=bash
-# 04_purge.sh — Task 3: safely wipe telemetry logs, pending pings and crash
-# caches that can trigger thread lock-ups. Every deletion is fenced behind a
-# strict path guard so an unset variable can never escalate to rm -rf /.
+# 04_purge.sh — Task 3: safely wipe telemetry logs, pending pings and crash caches that can trigger thread lock-ups. Every deletion is fenced behind a strict path guard so an unset variable can never escalate to rm -rf /.
 
 firephlox_purge_caches() {
 	firephlox_section 'Task 3 · Safe cache & telemetry purge'

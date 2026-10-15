@@ -6,8 +6,7 @@
 # Source: https://github.com/mozilla/policy-templates
 
 # _firephlox_shuffle_build_xpi <dest_xpi> <js_src> <ext_id>
-# Creates the XPI (ZIP) in a temp path then installs it at <dest_xpi>,
-# escalating with sudo when the target directory is not writable.
+# Creates the XPI (ZIP) in a temp path then installs it at <dest_xpi>, escalating with sudo when the target directory is not writable.
 _firephlox_shuffle_build_xpi() {
 	local dest="$1" js_src="$2" ext_id="$3"
 	local tmp
