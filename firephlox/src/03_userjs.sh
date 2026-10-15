@@ -1,7 +1,5 @@
 # shellcheck shell=bash
-# 03_userjs.sh — Task 2: harden every active profile via a managed user.js
-# block. The block is delimited by markers so re-runs stay idempotent and
-# never disturb the user's own preferences.
+# 03_userjs.sh — Task 2: harden every active profile via a managed user.js block. The block is delimited by markers so re-runs stay idempotent and never disturb the user's own preferences.
 
 firephlox_apply_userjs() {
 	firephlox_section 'Task 2 · Active profile hardening (user.js)'

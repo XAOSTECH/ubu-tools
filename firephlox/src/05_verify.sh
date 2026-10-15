@@ -1,6 +1,5 @@
 # shellcheck shell=bash
-# 05_verify.sh — final validation: confirm every configuration path was
-# mapped correctly and report the authoritative locking mechanism.
+# 05_verify.sh — final validation: confirm every configuration path was mapped correctly and report the authoritative locking mechanism.
 
 firephlox_verify() {
 	firephlox_section 'Verification · Path mapping & lock status'

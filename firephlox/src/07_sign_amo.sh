@@ -2,8 +2,7 @@
 # 07_sign_amo.sh — Task 5: sign the extension XPI via Mozilla's AMO API.
 #
 # Firefox Release enforces extension signatures at the binary level.
-# xpinstall.signatures.required is ignored in Release builds regardless of
-# user.js or enterprise policy. The only solution is a signed XPI.
+# xpinstall.signatures.required is ignored in Release builds regardless of user.js or enterprise policy. The only solution is a signed XPI.
 #
 # Credentials: https://addons.mozilla.org/en-US/developers/addon/api/key/
 #   FIREPHLOX_AMO_KEY    — API Key (jwtiss field)

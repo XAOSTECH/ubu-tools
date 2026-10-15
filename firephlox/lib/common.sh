@@ -17,8 +17,7 @@ firephlox_die()   { firephlox_error "$*"; exit 1; }
 firephlox_is_dry_run() { [[ "${FIREPHLOX_DRY_RUN:-0}" == "1" ]]; }
 
 # --- Privilege handling --------------------------------------------------
-# Escalate with sudo only when a target is genuinely not writable, and only
-# ever for the system-wide /var/snap surface — never for user files.
+# Escalate with sudo only when a target is genuinely not writable, and only ever for the system-wide /var/snap surface — never for user files.
 firephlox_privileged() {
 	if [[ ${EUID} -eq 0 ]]; then
 		"$@"
@@ -87,8 +86,7 @@ firephlox_confirm() {
 }
 
 # --- Profile discovery ---------------------------------------------------
-# Echoes the absolute path of every existing profile (one per line), taking
-# the union of profiles.ini entries and the usual *.default-release globs.
+# Echoes the absolute path of every existing profile (one per line), taking the union of profiles.ini entries and the usual *.default-release globs.
 firephlox_discover_profiles() {
 	local base="${FIREPHLOX_USER_PROFILES_DIR}"
 	[[ -d "${base}" ]] || return 0

@@ -6,8 +6,7 @@
 [[ -n "${FIREPHLOX_COLOURS_SOURCED:-}" ]] && return 0
 readonly FIREPHLOX_COLOURS_SOURCED=1
 
-# Honour a real terminal, respect NO_COLOR, and fall back to plain text
-# when the output is redirected or the terminal is "dumb".
+# Honour a real terminal, respect NO_COLOR, and fall back to plain text when the output is redirected or the terminal is "dumb".
 if [[ -t 1 && -z "${NO_COLOR:-}" && "${TERM:-dumb}" != "dumb" ]]; then
 	FP_RESET=$'\033[0m'
 	FP_BOLD=$'\033[1m'

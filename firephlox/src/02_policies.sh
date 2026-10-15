@@ -14,9 +14,7 @@
 #       configures Firefox to also search this location.
 #
 # mozilla.cfg / autoconfig.js are intentionally NOT written.
-# Those files require a pointer in defaults/pref/ of the installation
-# directory, which lives under read-only /snap/firefox/current/ in the
-# snap. Writing to /var/snap/firefox/common/defaults/pref/ has no effect.
+# Those files require a pointer in defaults/pref/ of the installation directory, which lives under read-only /snap/firefox/current/ in the snap. Writing to /var/snap/firefox/common/defaults/pref/ has no effect.
 
 _firephlox_policies_json() {
 	# Emit the policies JSON body on stdout so callers can pipe it to a file.
