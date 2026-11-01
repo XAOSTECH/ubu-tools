@@ -69,7 +69,7 @@ pld = b64url(json.dumps({"iss": api_key, "jti": str(uuid.uuid4()), "iat": iat, "
 sig = b64url(hmac.new(api_secret.encode(), hdr + b'.' + pld, hashlib.sha256).digest())
 jwt = (hdr + b'.' + pld + b'.' + sig).decode()
 
-headers = {'Authorization': f'JWT {jwt}'}
+headers = {'Authorisation': f'JWT {jwt}'}
 
 # --- 2. Upload XPI via AMO API v5 -------------------------------------------
 import urllib.parse, zipfile, io
