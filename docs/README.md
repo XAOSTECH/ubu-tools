@@ -1,16 +1,9 @@
 # ubu-tools
 
-<!-- Project Shields/Badges -->
 <p align="center">
-  <a href="https://github.com/xaoscience/ubu-tools">
-    <img alt="GitHub repo" src="https://img.shields.io/badge/GitHub-xaoscience%2Fubu-tools-181717?style=for-the-badge&logo=github">
-  </a>
-  <a href="https://github.com/xaoscience/ubu-tools/releases">
-    <img alt="GitHub release" src="https://img.shields.io/github/v/release/xaoscience/ubu-tools?style=for-the-badge&logo=semantic-release&color=blue">
-  </a>
-  <a href="https://github.com/xaoscience/ubu-tools/blob/main/LICENSE">
-    <img alt="License" src="https://img.shields.io/github/license/xaoscience/ubu-tools?style=for-the-badge&color=green">
-  </a>
+  <a href="https://github.com/XAOSTECH/ubu-tools"><img alt="GitHub repo" src="https://img.shields.io/badge/GitHub-XAOSTECH%2Fubu-tools-181717?style=for-the-badge&logo=github"></a>
+  <a href="https://github.com/XAOSTECH/ubu-tools/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/XAOSTECH/ubu-tools?style=for-the-badge&logo=semantic-release&color=blue"></a>
+  <a href="https://github.com/XAOSTECH/ubu-tools/blob/main/LICENSE"><img alt="Licence" src="https://img.shields.io/badge/licence-GPL--3.0-green?style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -38,7 +31,6 @@
   <img alt="Contributors" src="https://img.shields.io/github/contributors/xaoscience/ubu-tools?style=flat-square&logo=github&color=green">
 </p>
 
-<!-- Optional: Stability/Maturity Badge -->
 <p align="center">
   <img alt="Stability" src="https://img.shields.io/badge/stability-experimental-orange?style=flat-square">
   <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2025?style=flat-square">
